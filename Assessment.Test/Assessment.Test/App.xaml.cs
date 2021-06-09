@@ -14,7 +14,8 @@ namespace Assessment.Test
         public App()
         {
             InitializeComponent();
-            DependencyService.Register<ILoginService, LoginService>();
+            Page page = Activator.CreateInstance(typeof(LoginView)) as Page;
+            page.BindingContext = DependencyService.Get<LoginViewModel>();
             MainPage = new NavigationPage(new LoginView());
         }
 
