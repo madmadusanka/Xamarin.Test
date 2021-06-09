@@ -1,4 +1,6 @@
-﻿using Assessment.Test.ViewModels;
+﻿using Assessment.Test.Services;
+using Assessment.Test.Services.Interfaces;
+using Assessment.Test.ViewModels;
 using Assessment.Test.Views;
 using Assessment.Test.Views.Base;
 using System;
@@ -12,9 +14,8 @@ namespace Assessment.Test
         public App()
         {
             InitializeComponent();
-            Page page = Activator.CreateInstance(typeof(HomeView)) as Page;
-            page.BindingContext = DependencyService.Get<HomeViewModel>();
-            MainPage = page;
+            DependencyService.Register<ILoginService, LoginService>();
+            MainPage = new NavigationPage(new LoginView());
         }
 
         protected override void OnStart()

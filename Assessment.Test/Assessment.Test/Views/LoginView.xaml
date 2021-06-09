@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assessment.Test.Views.LoginView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Log Into Your Account" FontSize="Title" TextColor="#008BFF" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="0,30,0,10"/>
+            <Grid Grid.Row="2" WidthRequest="500">
+                <Frame HasShadow="True" BorderColor="#00C3FF" Padding="10,10,10,10" Margin="20,0" >
+                    <StackLayout Orientation="Vertical" Spacing="50">
+                        <Entry x:Name="userNameEntry" Text="{Binding UserName}" Placeholder="User Name" Margin="20,0"  TextColor="Blue" PlaceholderColor="#008BFF" ></Entry>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <Grid Grid.Row="3" WidthRequest="500">
+                <Frame HasShadow="True" BorderColor="#00C3FF" Padding="10,10,10,10" Margin="20,20,20,20"  >
+                    <StackLayout Orientation="Vertical" Spacing="50">
+                        <Entry x:Name="passwordEntry" Text="{Binding password}" Placeholder="password" Margin="20,0"  TextColor="Blue" PlaceholderColor="#008BFF" ></Entry>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <Grid>
+                <Button x:Name="loginButton" Text="Login" Padding="15,15,15,15" BackgroundColor="#00C3FF" Margin="25,20,25,20" FontAttributes="Bold" TextColor="#EDF4F4" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
