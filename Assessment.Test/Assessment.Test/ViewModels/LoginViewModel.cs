@@ -29,7 +29,7 @@ namespace Assessment.Test.ViewModels
         {
             if (login(userName,password))
             {
-                App.Current.MainPage.Navigation.PushAsync(new HomeView());
+                App.Current.MainPage.Navigation.PushAsync(new StockTransferView());
             }
             else
             {
