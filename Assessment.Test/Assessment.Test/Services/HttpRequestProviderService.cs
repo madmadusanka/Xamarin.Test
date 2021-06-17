@@ -1,4 +1,6 @@
-﻿using Assessment.Test.Services;
+﻿using Assessment.Test.Models;
+using Assessment.Test.Services;
+using Assessment.Test.ViewModels;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -16,6 +18,8 @@ namespace Assessment.Test.Services
     public class HttpRequestProviderService : IHttpRequestProviderService
     {
         private readonly JsonSerializerSettings jsonSerializerSettings;
+        private object responseData;
+        private JsonConverter[] serializerOptions;
 
         #region Constructors & initialization
 
@@ -57,7 +61,7 @@ namespace Assessment.Test.Services
                 response = new HttpResponseMessage(System.Net.HttpStatusCode.Created);
                 // comment code to send a fake call
                 //await httpClient.PostAsync(url, httpContent);
-
+                
                 if (response?.IsSuccessStatusCode ?? false)
                 {
                     // let it continue
@@ -83,6 +87,32 @@ namespace Assessment.Test.Services
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             return httpClient;
+        }
+
+        public async Task<STRootModel> GetAsync()
+        {
+            STRootModel root=null;
+            try
+            {
+
+                HttpResponseMessage response = null;
+
+
+                HttpClient httpClient = await CreateHttpClient();
+                response = await httpClient.GetAsync("https://reqres.in/api/users?page=2");
+                string responseData = await response.Content.ReadAsStringAsync();
+                
+                 root= JsonConvert.DeserializeObject<STRootModel>(responseData);
+
+                
+            }
+
+            catch (Exception ex) { 
+            
+            
+            }
+            return root;
+
         }
     }
 }

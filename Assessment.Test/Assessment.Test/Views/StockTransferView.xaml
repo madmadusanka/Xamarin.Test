@@ -35,7 +35,7 @@
                 <Label Text="To Branch" Grid.Row="0" Grid.Column="1"  Margin="20,0"/>
 
             <ScrollView Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Margin="5">
-                <CollectionView  ItemsSource="{Binding listitems}" SelectionMode="Single" SelectedItem="{Binding StockTransferModel}" ItemsLayout="VerticalGrid, 3">
+            <CollectionView  ItemsSource="{Binding Listitems}" SelectionMode="Single" SelectedItem="{Binding StockTransferModel}" ItemsLayout="VerticalGrid, 3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Padding="5">
@@ -47,7 +47,7 @@
                                     <ColumnDefinition Width="*"/>
                                     
                                 </Grid.ColumnDefinitions>
-                            <Label Text="{Binding product}" Grid.Column="0" Style="{StaticResource infostyle}" BackgroundColor="#FF827676" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                            <Label Text="{Binding first_name}" Grid.Column="0" Style="{StaticResource infostyle}" BackgroundColor="#FF827676" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BindingContext.DisplyLable,Source={x:Reference pageStockTransferView}}" CommandParameter="{Binding .}"/>
                                 </Label.GestureRecognizers>
