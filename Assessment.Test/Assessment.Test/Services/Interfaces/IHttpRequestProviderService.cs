@@ -18,6 +18,6 @@ namespace Assessment.Test.Services
         /// <param name="content"></param>
         /// <returns></returns>
         Task<HttpResponseMessage> PostAsync(string url, object content);
-        Task<STRootModel> GetAsync();
+        Task<T> GetAsync<T>(string url);
     }
 }

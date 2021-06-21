@@ -1,6 +1,8 @@
 ﻿using Assessment.Test.Models;
 using Assessment.Test.Services;
+using Assessment.Test.Services.Diary;
 using Assessment.Test.Utils;
+using Assessment.Test.ViewModels;
 using Assessment.Test.ViewModels.Base;
 using Newtonsoft.Json;
 using System;
@@ -13,6 +15,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
+[assembly: Dependency(typeof(StockTransferViewModel))]
 namespace Assessment.Test.ViewModels
 {
     public class StockTransferViewModel : BaseViewModel
@@ -38,12 +41,17 @@ namespace Assessment.Test.ViewModels
             getproducts();
         }
 
-        private async void getproducts()
+        public async void getproducts()
         {
-            IHttpRequestProviderService httpRequestProviderService = new HttpRequestProviderService();
-            STRootModel sTRootModel = await httpRequestProviderService.GetAsync();
+            //IHttpRequestProviderService httpRequestProviderService = new HttpRequestProviderService();
+            //STRootModel sTRootModel = await httpRequestProviderService.GetAsync();
+            //Listitems = new ObservableCollection<StockTransferModel>(sTRootModel.Data);
+            string url = "https://reqres.in/api/users?page=2";
+            StockAPIService stockAPIService = new StockAPIService();
+            STRootModel sTRootModel;
+            sTRootModel = await stockAPIService.AddStock<STRootModel>(url);
             Listitems = new ObservableCollection<StockTransferModel>(sTRootModel.Data);
-            
+
         }
 
         private ICommand _displaylable = null;
@@ -51,8 +59,8 @@ namespace Assessment.Test.ViewModels
         public ICommand DisplyLable => _displaylable = _displaylable ?? new Command<StockTransferModel>((parameter) => DisplyInfor(parameter));
         private async Task DisplyInfor(StockTransferModel produ)
         {
-            string pro = produ.first_name;
-            await App.Current.MainPage.DisplayAlert("Product",pro, AppConstants.Ok);
+            string pro = produ.First_Name;
+            App.Current.MainPage.DisplayAlert("Product",pro, AppConstants.Ok);
         }
     }
 }

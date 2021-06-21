@@ -89,9 +89,9 @@ namespace Assessment.Test.Services
             return httpClient;
         }
 
-        public async Task<STRootModel> GetAsync()
+        public async Task<T> GetAsync<T>(string url)
         {
-            STRootModel root=null;
+            T root= default; 
             try
             {
 
@@ -99,10 +99,10 @@ namespace Assessment.Test.Services
 
 
                 HttpClient httpClient = await CreateHttpClient();
-                response = await httpClient.GetAsync("https://reqres.in/api/users?page=2");
+                response = await httpClient.GetAsync(url);
                 string responseData = await response.Content.ReadAsStringAsync();
                 
-                 root= JsonConvert.DeserializeObject<STRootModel>(responseData);
+                 root= JsonConvert.DeserializeObject<T>(responseData);
 
                 
             }

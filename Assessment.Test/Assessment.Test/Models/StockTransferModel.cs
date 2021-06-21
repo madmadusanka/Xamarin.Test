@@ -8,14 +8,12 @@ namespace Assessment.Test.Models
 {
     public class StockTransferModel
     {
-        public int id { get; set; }
-        public string email { get; set; }
-        public string first_name { get; set; }
-        public string _Frist_name { get; set; }
+        public int Id { get; set; }
+        public string Email { get; set; }
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public string Avatar { get; set; }
 
-        public string last_name { get; set; }
-        public string avatar { get; set; }
 
-       
     }
 }

@@ -16,7 +16,7 @@ namespace Assessment.Test
             InitializeComponent();
             Page page = Activator.CreateInstance(typeof(LoginView)) as Page;
             page.BindingContext = DependencyService.Get<LoginViewModel>();
-            MainPage = new NavigationPage(new LoginView());
+            MainPage = page;
         }
 
         protected override void OnStart()
