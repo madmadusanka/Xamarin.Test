@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assessment.Test.Models;
+using Assessment.Test.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -16,6 +18,6 @@ namespace Assessment.Test.Services
         /// <param name="content"></param>
         /// <returns></returns>
         Task<HttpResponseMessage> PostAsync(string url, object content);
-
+        Task<T> GetAsync<T>(string url);
     }
 }
